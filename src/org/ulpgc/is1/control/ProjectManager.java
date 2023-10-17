@@ -1,4 +1,4 @@
-package org.ulpgc.is1.model;
+package org.ulpgc.is1.control;
 
 public class ProjectManager {
 }
