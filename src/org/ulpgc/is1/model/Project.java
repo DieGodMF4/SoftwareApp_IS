@@ -12,10 +12,12 @@ public class Project {
     private Contract contract;
     private ArrayList<Task> tasks;
     private Employee manager;
+    private ArrayList<Employee> developers;
 
 
-    public Project(int id, String name, String description, ProjectType type, Contract contract, ArrayList<Task> tasks, Employee manager) {
+    public Project(int id, String name, String description, ProjectType type, Contract contract, ArrayList<Task> tasks, Employee manager, ArrayList<Employee> developers) {
         this.manager = manager;
+        this.developers = developers;
         this.id = nextID++;
         this.name = name;
         this.description = description;
@@ -24,9 +26,24 @@ public class Project {
         this.tasks = tasks;
     }
 
-        public void addTask(String name, String description, Date start, Date end, TaskType taskType) {
-        Task t = new Task(name, description, start, end, taskType);
-        tasks.add(t);
+    public void addTask(String name, String description, Date start, Date end, TaskType taskType) { // TASK ES COMPOSICIÓN DE PROJECT
+        Task task = new Task(name, description, start, end, taskType);
+        if (!tasks.contains(task)) {
+            tasks.add(task);
+        }
+    }
+
+    void addDeveloper(Employee e) {
+        if (!developers.contains(e)){
+            developers.add(e);
+            e.addDeveloper(this);
+        }
+    }
+
+    public void setManager(Employee e) {
+        if (this.developers.contains(e))
+            manager = e;
+        e.addProjectsManager(this);
     }
 
     public String getName() {
@@ -81,7 +98,11 @@ public class Project {
         return manager;
     }
 
-    public void setManager(Employee manager) {
-        this.manager = manager;
+    public ArrayList<Employee> getDevelopers() {
+        return developers;
+    }
+
+    public void setDevelopers(ArrayList<Employee> developers) {
+        this.developers = developers;
     }
 }

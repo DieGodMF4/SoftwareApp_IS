@@ -7,18 +7,26 @@ public class Employee {
     private String email;
     private ArrayList<Project> developers;
     private ArrayList<Task> tasks;
-    private ArrayList<Project> projects;
+    private ArrayList<Project> projectsFromManager;
 
     public Employee(String name, String email, ArrayList<Project> developer, ArrayList<Task> tasks, ArrayList<Project> projects) {
         this.name = name;
         this.email = email;
         this.developers = new ArrayList<Project>();
         this.tasks = tasks;
-        this.projects = projects;
+        this.projectsFromManager = projects;
     }
 
     void addTask(Task task){
-        tasks.add(task);
+        if (!tasks.contains(task)){tasks.add(task);}
+    }
+
+    void addDeveloper (Project p){
+        if(!developers.contains(p)){developers.add(p);}
+    }
+
+    void addProjectsManager (Project p) {
+        if(!projectsFromManager.contains(p)){projectsFromManager.add(p);}
     }
 
     public String getName() {
@@ -53,11 +61,11 @@ public class Employee {
         this.tasks = tasks;
     }
 
-    public ArrayList<Project> getProjects() {
-        return projects;
+    public ArrayList<Project> getProjectsFromManager() {
+        return projectsFromManager;
     }
 
-    public void setProjects(ArrayList<Project> projects) {
-        this.projects = projects;
+    public void setProjectsFromManager(ArrayList<Project> projectsFromManager) {
+        this.projectsFromManager = projectsFromManager;
     }
 }
