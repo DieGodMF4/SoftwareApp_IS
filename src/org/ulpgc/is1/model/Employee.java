@@ -12,20 +12,20 @@ public class Employee {
     public Employee(String name, String email, ArrayList<Project> developers, ArrayList<Task> tasks, ArrayList<Project> projects) {
         this.name = name;
         this.email = email;
-        this.developers = new ArrayList<Project>(developers);
+        this.developers = new ArrayList<>(developers);
         this.tasks = tasks;
         this.projectsFromManager = projects;
     }
 
-    void addTask(Task task){
+    public void addTask(Task task){
         if (!tasks.contains(task)){tasks.add(task);}
     }
 
-    void addDeveloper (Project p){
+    public void addDeveloper (Project p){
         if(!developers.contains(p)){developers.add(p);}
     }
 
-    void addProjectsManager (Project p) {
+    public void addProjectsManager (Project p) {
         if(!projectsFromManager.contains(p)){projectsFromManager.add(p);}
     }
 

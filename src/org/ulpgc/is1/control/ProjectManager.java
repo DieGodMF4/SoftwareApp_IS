@@ -3,7 +3,6 @@ package org.ulpgc.is1.control;
 import org.ulpgc.is1.model.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ProjectManager {
     private ArrayList<Customer> customers;
@@ -11,6 +10,7 @@ public class ProjectManager {
     private ArrayList<Project> projects;
 
     public ProjectManager() {
+        projects = new ArrayList<>();
         customers = new ArrayList<>();
         employees = new ArrayList<>();
     }
@@ -69,6 +69,7 @@ public class ProjectManager {
         } return null;
     }
 
+    /*
     public void addProject(String name, String description, ProjectType type, Employee manager, Date contractStart,
                            Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
         Project project = new Project(name, description, type, manager, contractStart, contractEnd,
@@ -78,6 +79,8 @@ public class ProjectManager {
         } else {System.out.println("That project is already in the list!");}
     }
 
+     */
+
     public void setCustomers(ArrayList<Customer> customers) {
         this.customers = customers;
     }
@@ -85,4 +88,11 @@ public class ProjectManager {
     public void setEmployees(ArrayList<Employee> employees) {
         this.employees = employees;
     }
+
+    public void project() {
+        Project project = new Project();
+        customers.addProject(project);
+        employees.addProjectsManager(project);
+    }
+
 }
