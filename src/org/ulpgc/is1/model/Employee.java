@@ -9,10 +9,10 @@ public class Employee {
     private ArrayList<Task> tasks;
     private ArrayList<Project> projectsFromManager;
 
-    public Employee(String name, String email, ArrayList<Project> developer, ArrayList<Task> tasks, ArrayList<Project> projects) {
+    public Employee(String name, String email, ArrayList<Project> developers, ArrayList<Task> tasks, ArrayList<Project> projects) {
         this.name = name;
         this.email = email;
-        this.developers = new ArrayList<Project>();
+        this.developers = new ArrayList<Project>(developers);
         this.tasks = tasks;
         this.projectsFromManager = projects;
     }

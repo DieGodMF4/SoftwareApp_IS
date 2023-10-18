@@ -15,15 +15,16 @@ public class Project {
     private ArrayList<Employee> developers;
 
 
-    public Project(int id, String name, String description, ProjectType type, Contract contract, ArrayList<Task> tasks, Employee manager, ArrayList<Employee> developers) {
+    public Project(String name, String description, ProjectType type, Employee manager, Date contractStart,
+                   Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
         this.manager = manager;
         this.developers = developers;
         this.id = nextID++;
         this.name = name;
         this.description = description;
         this.type = type;
-        this.contract = contract;
-        this.tasks = tasks;
+        contract = new Contract(contractStart, contractEnd, contractBudget);
+        tasks = new ArrayList<>();
     }
 
     public void addTask(String name, String description, Date start, Date end, TaskType taskType) { // TASK ES COMPOSICIÓN DE PROJECT
