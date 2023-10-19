@@ -8,11 +8,11 @@ public class Customer {
     private Phone phone;
     private ArrayList<Project> projects;
 
-    public Customer(String name, String surname, String number, ArrayList<Project> projects) {
+    public Customer(String name, String surname, Phone number) {
         this.name = name;
         this.surname = surname;
-        this.phone = new Phone(number);
-        this.projects = projects;
+        this.phone = number;
+        this.projects = new ArrayList<>();
     }
 
     public void setPhone(String number){
@@ -51,5 +51,10 @@ public class Customer {
         if (!projects.contains(project)) {
             projects.add(project);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Customer called: " + this.name + " " + this.surname + " with phone: " + this.phone.toString() + ".";
     }
 }
