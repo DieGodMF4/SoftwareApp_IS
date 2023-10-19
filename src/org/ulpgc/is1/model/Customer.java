@@ -8,16 +8,15 @@ public class Customer {
     private Phone phone;
     private ArrayList<Project> projects;
 
-    public Customer(String name, String surname, Phone phone, ArrayList<Project> projects) {
+    public Customer(String name, String surname, String number, ArrayList<Project> projects) {
         this.name = name;
         this.surname = surname;
-        this.phone = phone;
+        this.phone = new Phone(number);
         this.projects = projects;
     }
 
-    public void setPhone(Phone number){
-        this.phone = number;
-        this.phone.isValid();
+    public void setPhone(String number){
+        if (this.phone.isValid()){this.phone.setNumber(number);} else {this.phone.setNumber("XXXX");}
     }
 
     public String getName() {

@@ -15,9 +15,13 @@ public class Phone {
         this.number = number;
     }
 
-    public void isValid() {
-        if (!number.matches("\\d{9}")) {
-            number = "XXXX";
-        }
+    public boolean isValid() {
+        return number.matches("\\d{9}");
+    }
+
+    @Override
+    public String toString() {
+        if (isValid()) {return number;} else {return  "XXXX";}
+        // return isValid() ? number : "XXXX";
     }
 }

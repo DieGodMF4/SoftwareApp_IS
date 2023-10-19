@@ -14,8 +14,8 @@ public class ProjectManager {
         employees = new ArrayList<>();
     }
 
-    public void addCustomer(String name, String surname, Phone phone, ArrayList<Project> projects) {
-        Customer customer = new Customer(name, surname, phone, projects);
+    public void addCustomer(String name, String surname, String number, ArrayList<Project> projects) {
+        Customer customer = new Customer(name, surname, number, projects);
         if (!customers.contains(customer)) {
             customers.add(customer);
         } else {System.out.println("That customer is already in the list!");}
