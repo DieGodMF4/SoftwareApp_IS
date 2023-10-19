@@ -16,7 +16,16 @@ public class ProjectManager {
 
     public void addCustomer(String name, String surname, Phone number) {
         Customer customer = new Customer(name, surname, number);
-        if (!customers.contains(customer)) {
+        boolean condition = false;
+        for (Customer currentCustomer : customers){
+            if ((customer.getName().equals(currentCustomer.getName()) &&
+                    customer.getSurname().equals(currentCustomer.getSurname())) |
+                    customer.getPhone().getNumber().equals(currentCustomer.getPhone().getNumber())) {
+                condition = true;
+                break;
+            }
+        }
+        if (!(customers.contains(customer) || condition)) {
             customers.add(customer);
         } else {System.out.println("That customer is already in the list!");}
     }
