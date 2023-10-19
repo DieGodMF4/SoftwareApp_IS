@@ -3,20 +3,19 @@ package org.ulpgc.is1.control;
 import org.ulpgc.is1.model.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ProjectManager {
     private ArrayList<Customer> customers;
     private ArrayList<Employee> employees;
-    private ArrayList<Project> projects;
 
     public ProjectManager() {
-        projects = new ArrayList<>();
         customers = new ArrayList<>();
         employees = new ArrayList<>();
     }
 
-    public void addCustomer(String name, String surname, Phone phone) {
-        Customer customer = new Customer(name, surname, phone);
+    public void addCustomer(String name, String surname, Phone phone, ArrayList<Project> projects) {
+        Customer customer = new Customer(name, surname, phone, projects);
         if (!customers.contains(customer)) {
             customers.add(customer);
         } else {System.out.println("That customer is already in the list!");}
@@ -78,7 +77,10 @@ public class ProjectManager {
             projects.add(project);
         } else {System.out.println("That project is already in the list!");}
     }
-
+    **
+    No válido pues se crearían dos listas: una para los proyectos creados en "Project" y otra diferente
+    para los creados mediante la clase "ProjectManager".
+    **
      */
 
     public void setCustomers(ArrayList<Customer> customers) {
@@ -89,10 +91,20 @@ public class ProjectManager {
         this.employees = employees;
     }
 
-    public void project() {
-        Project project = new Project();
-        customers.addProject(project);
-        employees.addProjectsManager(project);
+    public void projectAsManager(Customer customer, Employee employeeManager, String name, String description, ProjectType type, Employee manager, Date contractStart,
+                                 Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
+        Project project = new Project(name, description, type, manager, contractStart, contractEnd, contractBudget,
+                developers);
+        customer.addProject(project);
+        employeeManager.addProjectsManager(project);
+    }
+
+    public void projectAsDeveloper(Customer customer, Employee employeeDeveloper, String name, String description, ProjectType type, Employee manager, Date contractStart,
+                                 Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
+        Project project = new Project(name, description, type, manager, contractStart, contractEnd, contractBudget,
+                developers);
+        customer.addProject(project);
+        employeeDeveloper.addDevelopersProjects(project);
     }
 
 }

@@ -5,28 +5,28 @@ import java.util.ArrayList;
 public class Employee {
     private String name;
     private String email;
-    private ArrayList<Project> developers;
+    private ArrayList<Project> developersProjects;
     private ArrayList<Task> tasks;
     private ArrayList<Project> projectsFromManager;
 
     public Employee(String name, String email, ArrayList<Project> developers, ArrayList<Task> tasks, ArrayList<Project> projects) {
         this.name = name;
         this.email = email;
-        this.developers = new ArrayList<>(developers);
+        this.developersProjects = new ArrayList<>(developers);
         this.tasks = tasks;
         this.projectsFromManager = projects;
     }
 
     public void addTask(Task task){
-        if (!tasks.contains(task)){tasks.add(task);}
+        if (!tasks.contains(task)){tasks.add(task);} else {System.out.println("Task already added!");}
     }
 
-    public void addDeveloper (Project p){
-        if(!developers.contains(p)){developers.add(p);}
+    public void addDevelopersProjects (Project p){
+        if(!developersProjects.contains(p)){developersProjects.add(p);} else {System.out.println("Project already added!");}
     }
 
     public void addProjectsManager (Project p) {
-        if(!projectsFromManager.contains(p)){projectsFromManager.add(p);}
+        if(!projectsFromManager.contains(p)){projectsFromManager.add(p);} else {System.out.println("Project already added!");}
     }
 
     public String getName() {
@@ -46,11 +46,11 @@ public class Employee {
     }
 
     public ArrayList<Project> getDevelopers() {
-        return developers;
+        return developersProjects;
     }
 
     public void setDevelopers(ArrayList<Project> developers) {
-        this.developers = developers;
+        this.developersProjects = developers;
     }
 
     public ArrayList<Task> getTasks() {

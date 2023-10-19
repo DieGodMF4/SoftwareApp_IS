@@ -48,5 +48,9 @@ public class Customer {
         this.projects = projects;
     }
 
-    public void addProjects(Project project) //TODO
+    public void addProject(Project project) {
+        if (!projects.contains(project)) {
+            projects.add(project);
+        }
+    }
 }
