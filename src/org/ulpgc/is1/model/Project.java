@@ -37,7 +37,7 @@ public class Project {
     void addDeveloper(Employee e) {
         if (!developers.contains(e)){
             developers.add(e);
-            e.addDeveloper(this);
+            e.addDevelopersProjects(this);
         }
     }
 
