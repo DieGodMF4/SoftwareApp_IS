@@ -25,7 +25,7 @@ public class Employee {
         if(!developersProjects.contains(p)){developersProjects.add(p);} else {System.out.println("Project already added!");}
     }
 
-    public void addProjectsManager (Project p) {
+    public void addProjectsFromManager (Project p) {
         if(!projectsFromManager.contains(p)){projectsFromManager.add(p);} else {System.out.println("Project already added!");}
     }
 
@@ -67,5 +67,10 @@ public class Employee {
 
     public void setProjectsFromManager(ArrayList<Project> projectsFromManager) {
         this.projectsFromManager = projectsFromManager;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + this.getName() + " with e-mail: " + this.getEmail();
     }
 }

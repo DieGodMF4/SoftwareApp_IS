@@ -44,7 +44,7 @@ public class Project {
     public void setManager(Employee e) {
         if (this.developers.contains(e))
             manager = e;
-        e.addProjectsManager(this);
+        e.addProjectsFromManager(this);
     }
 
     public String getName() {

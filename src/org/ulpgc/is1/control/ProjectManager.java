@@ -32,7 +32,14 @@ public class ProjectManager {
 
     public void addEmployee(String name, String email, ArrayList<Project> developers, ArrayList<Task> tasks, ArrayList<Project> projects) {
         Employee employee = new Employee(name, email, developers, tasks, projects);
-        if (!employees.contains(employee)) {
+        boolean condition = false;
+        for (Employee currentEmployee:employees) {
+            if (currentEmployee.getEmail().equals(employee.getEmail())) {
+                condition = true;
+                break;
+            }
+        }
+        if (!(employees.contains(employee) || condition)) {
             employees.add(employee);
         } else {System.out.println("That employee is already in the list!");}
     }
@@ -105,7 +112,7 @@ public class ProjectManager {
         Project project = new Project(name, description, type, manager, contractStart, contractEnd, contractBudget,
                 developers);
         customer.addProject(project);
-        employeeManager.addProjectsManager(project);
+        employeeManager.addProjectsFromManager(project);
     }
 
     public void projectAsDeveloper(Customer customer, Employee employeeDeveloper, String name, String description, ProjectType type, Employee manager, Date contractStart,
