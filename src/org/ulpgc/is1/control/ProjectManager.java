@@ -1,7 +1,9 @@
 package org.ulpgc.is1.control;
 
+import org.junit.runner.manipulation.InvalidOrderingException;
 import org.ulpgc.is1.model.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -107,20 +109,18 @@ public class ProjectManager {
         this.employees = employees;
     }
 
-    public void projectAsManager(Customer customer, Employee employeeManager, String name, String description, ProjectType type, Employee manager, Date contractStart,
-                                 Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
+    public void project(Customer customer, Employee employee, String name, String description, ProjectType type, Employee manager, Date contractStart,
+                                 Date contractEnd, int contractBudget, ArrayList<Employee> developers, String developer_or_manager) {
         Project project = new Project(name, description, type, manager, contractStart, contractEnd, contractBudget,
                 developers);
         customer.addProject(project);
-        employeeManager.addProjectsFromManager(project);
-    }
-
-    public void projectAsDeveloper(Customer customer, Employee employeeDeveloper, String name, String description, ProjectType type, Employee manager, Date contractStart,
-                                 Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
-        Project project = new Project(name, description, type, manager, contractStart, contractEnd, contractBudget,
-                developers);
-        customer.addProject(project);
-        employeeDeveloper.addDevelopersProjects(project);
+        if (developer_or_manager.equals("developer")) {
+            employee.addDevelopersProjects(project);
+        } else if (developer_or_manager.equals("manager")) {
+            employee.addProjectsFromManager(project);
+        } else {
+            System.out.println("Select as last parameter \"developer\" or \"manager\"! Project not suitable!");
+        }
     }
 
 }

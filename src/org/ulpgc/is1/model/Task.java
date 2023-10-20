@@ -56,4 +56,10 @@ public class Task {
     public void setTaskType(TaskType taskType) {
         this.taskType = taskType;
     }
+
+    @Override
+    public String toString() {
+        return this.getName() + ": " + this.getDescription() + ". " + this.getTaskType() +
+                " starting " + this.getStart() + " and ending " + getEnd();
+    }
 }

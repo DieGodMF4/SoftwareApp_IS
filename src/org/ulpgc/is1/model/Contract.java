@@ -36,4 +36,10 @@ public class Contract {
     public void setEnd(Date end) {
         this.end = end;
     }
+
+    @Override
+    public String toString() {
+        return "Contract starting: " + this.getStart() + " and ending: " + this.getEnd() + " with " +
+                this.getBudget() + "$ as budget.";
+    }
 }

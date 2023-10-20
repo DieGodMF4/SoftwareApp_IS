@@ -106,4 +106,11 @@ public class Project {
     public void setDevelopers(ArrayList<Employee> developers) {
         this.developers = developers;
     }
+
+    @Override
+    public String toString() {
+        return "Project called: " + this.getName() + " with description: " + this.getDescription() +
+                ".\nManager: " + this.getManager() + "; and developers: " + this.getDevelopers() +
+                ".\nThe project has these tasks: " + this.getTasks() + ".\nThe contract is: " + this.getContract().toString();
+    }
 }
