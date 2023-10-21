@@ -13,16 +13,18 @@ public class Project {
     private ArrayList<Task> tasks;
     private Employee manager;
     private ArrayList<Employee> developers;
+    private Customer customer;
 
 
     public Project(String name, String description, ProjectType type, Employee manager, Date contractStart,
-                   Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
+                   Date contractEnd, int contractBudget, ArrayList<Employee> developers, Customer customer) {
         this.manager = manager;
         this.developers = developers;
         this.id = nextID++;
         this.name = name;
         this.description = description;
         this.type = type;
+        this.customer = customer;
         contract = new Contract(contractStart, contractEnd, contractBudget);
         tasks = new ArrayList<>();
     }
@@ -34,17 +36,15 @@ public class Project {
         }
     }
 
-    void addDeveloper(Employee e) {
-        if (!developers.contains(e)){
-            developers.add(e);
-            e.addDevelopersProjects(this);
+    void addDeveloper(Employee employee) {
+        if (!developers.contains(employee)){
+            developers.add(employee);
         }
     }
 
-    public void setManager(Employee e) {
-        if (this.developers.contains(e))
-            manager = e;
-        e.addProjectsFromManager(this);
+    public void setManager(Employee employee) {
+        if (this.developers.contains(employee))
+            manager = employee;
     }
 
     public String getName() {
@@ -112,5 +112,13 @@ public class Project {
         return "Project called: " + this.getName() + " with description: " + this.getDescription() +
                 ".\nManager: " + this.getManager() + "; and developers: " + this.getDevelopers() +
                 ".\nThe project has these tasks: " + this.getTasks() + ".\nThe contract is: " + this.getContract().toString();
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

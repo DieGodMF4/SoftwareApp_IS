@@ -26,9 +26,9 @@ public class Main {
 
 
         // Aggregate Employees
-        projectManager.addEmployee("Trump", "trumppresident@empresa.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-        projectManager.addEmployee("AnotherTrump", "trumppresident@empresa.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-        projectManager.addEmployee("Charles", "CharlesKing69@empresa.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        projectManager.addEmployee("Trump", "trumppresident@empresa.com", new ArrayList<>(), new ArrayList<>());
+        projectManager.addEmployee("AnotherTrump", "trumppresident@empresa.com", new ArrayList<>(), new ArrayList<>());
+        projectManager.addEmployee("Charles", "CharlesKing69@empresa.com", new ArrayList<>(), new ArrayList<>());
 
         ArrayList<Employee> employees = projectManager.getEmployees();
         System.out.println(employees.toString());
@@ -43,11 +43,11 @@ public class Main {
         ArrayList<Employee> developers = new ArrayList<>();
         developers.add(employee1Developer);
         // Project:
-        projectManager.project(customer, employee2Manager, "Proyecto 1",
+        projectManager.project(customer, "Proyecto 1",
                 "Proyecto de prueba", ProjectType.WebDevelopment, employee2Manager, contractStart,
-                contractEnd, contractBudget, developers, "manager");
+                contractEnd, contractBudget, developers);
 
-        Project project = employee2Manager.getProjectsFromManager().get(0);
+        Project project = customer.getProjects().get(0);
         System.out.println(project.toString());
 
 
@@ -57,5 +57,7 @@ public class Main {
         project.addTask("Task 2", "Developing an ad-service web for kid's toys", contractStart,
                 contractEnd, TaskType.Design);
         System.out.println(project);
+
+
     }
     }

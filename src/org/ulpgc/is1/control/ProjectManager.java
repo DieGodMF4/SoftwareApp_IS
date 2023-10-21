@@ -32,8 +32,8 @@ public class ProjectManager {
         } else {System.out.println("That customer is already in the list!");}
     }
 
-    public void addEmployee(String name, String email, ArrayList<Project> developers, ArrayList<Task> tasks, ArrayList<Project> projects) {
-        Employee employee = new Employee(name, email, developers, tasks, projects);
+    public void addEmployee(String name, String email, ArrayList<Task> tasks, ArrayList<Project> projects) {
+        Employee employee = new Employee(name, email, tasks, projects);
         boolean condition = false;
         for (Employee currentEmployee:employees) {
             if (currentEmployee.getEmail().equals(employee.getEmail())) {
@@ -109,18 +109,11 @@ public class ProjectManager {
         this.employees = employees;
     }
 
-    public void project(Customer customer, Employee employee, String name, String description, ProjectType type, Employee manager, Date contractStart,
-                                 Date contractEnd, int contractBudget, ArrayList<Employee> developers, String developer_or_manager) {
+    public void project(Customer customer, String name, String description, ProjectType type, Employee manager, Date contractStart,
+                                 Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
         Project project = new Project(name, description, type, manager, contractStart, contractEnd, contractBudget,
-                developers);
+                developers, customer);
         customer.addProject(project);
-        if (developer_or_manager.equals("developer")) {
-            employee.addDevelopersProjects(project);
-        } else if (developer_or_manager.equals("manager")) {
-            employee.addProjectsFromManager(project);
-        } else {
-            System.out.println("Select as last parameter \"developer\" or \"manager\"! Project not suitable!");
-        }
     }
 
 }

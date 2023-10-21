@@ -1,5 +1,6 @@
 package org.ulpgc.is1.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Task {
@@ -8,6 +9,8 @@ public class Task {
     private Date start;
     private Date end;
     private TaskType taskType;
+    private ArrayList<Employee> employees;
+    private Effort effort;
 
     public Task(String name, String description, Date start, Date end, TaskType taskType) {
         this.name = name;
@@ -15,6 +18,15 @@ public class Task {
         this.start = start;
         this.end = end;
         this.taskType = taskType;
+        employees = new ArrayList<>();
+    }
+
+    public void addEffort(Effort effort) {
+        this.effort = effort;
+    }
+
+    public ArrayList<Employee> getEmployee() {
+        return employees;
     }
 
     public String getName() {
@@ -61,5 +73,13 @@ public class Task {
     public String toString() {
         return this.getName() + ": " + this.getDescription() + ". " + this.getTaskType() +
                 " starting " + this.getStart() + " and ending " + getEnd();
+    }
+
+    public Effort getEffort() {
+        return effort;
+    }
+
+    public void setEffort(Effort effort) {
+        this.effort = effort;
     }
 }

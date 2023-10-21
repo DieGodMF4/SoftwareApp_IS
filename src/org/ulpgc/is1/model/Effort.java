@@ -3,12 +3,12 @@ package org.ulpgc.is1.model;
 public class Effort {
     private Employee employee;
     private Task task;
-    private int amount;
+    private int amount = 0;
 
-    public Effort(Employee employee, Task task, int amount) {
+    public Effort(Employee employee, Task task) {
         this.employee = employee;
         this.task = task;
-        this.amount = amount;
+        this.amount = 0;
     }
 
     public Employee getEmployee() {
