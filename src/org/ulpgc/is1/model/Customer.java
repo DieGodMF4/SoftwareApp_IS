@@ -15,8 +15,12 @@ public class Customer {
         this.projects = new ArrayList<>();
     }
 
-    public void setPhone(String number){
-        if (this.phone.isValid()){this.phone.setNumber(number);} else {this.phone.setNumber("XXXX");}
+    public void setPhone(String number) {
+        if (this.phone.isValid()) {
+            this.phone.setNumber(number);
+        } else {
+            this.phone.setNumber("XXXX");
+        }
     }
 
     public String getName() {

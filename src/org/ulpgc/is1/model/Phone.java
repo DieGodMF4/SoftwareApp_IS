@@ -21,7 +21,11 @@ public class Phone {
 
     @Override
     public String toString() {
-        if (isValid()) {return number;} else {return  "XXXX";}
+        if (isValid()) {
+            return number;
+        } else {
+            return "XXXX";
+        }
         // return isValid() ? number : "XXXX";
     }
 }

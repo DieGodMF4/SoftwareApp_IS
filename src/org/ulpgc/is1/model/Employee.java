@@ -16,8 +16,12 @@ public class Employee {
         this.projects = projects;
     }
 
-    public void addTask(Task task){
-        if (!tasks.contains(task)){tasks.add(task);} else {System.out.println("Task already added!");}
+    public void addTask(Task task) {
+        if (!tasks.contains(task)) {
+            tasks.add(task);
+        } else {
+            System.out.println("Task already added!");
+        }
     }
 
     public void addProject(Project project) {

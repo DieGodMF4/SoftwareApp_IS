@@ -29,6 +29,10 @@ public class Task {
         return employees;
     }
 
+    public void setEmployees(ArrayList<Employee> employees) {
+        this.employees = employees;
+    }
+
     public String getName() {
         return name;
     }

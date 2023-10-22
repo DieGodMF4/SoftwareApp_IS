@@ -11,15 +11,16 @@ public class Main {
         ProjectManager projectManager = new ProjectManager();
 
         // Aggregate Customers
-        projectManager.addCustomer("George", "Smith", new Phone("677735244"));
-        projectManager.addCustomer("George", "SmithPhoneCloner", new Phone("677735244"));
-        projectManager.addCustomer("George", "Smith", new Phone("677735266"));
-        projectManager.addCustomer("Ada", "Dai", new Phone("698795244"));
+        projectManager.addCustomer("George", "Washington", new Phone("677735244"));
+        projectManager.addCustomer("George", "WashingtonPhoneCloner", new Phone("677735244"));
+        projectManager.addCustomer("George", "Washington", new Phone("677735266"));
+        projectManager.addCustomer("Levi", "Ackerman", new Phone("123456789"));
         projectManager.addCustomer("Mr.", "WrongNumber", new Phone("6987952"));
         projectManager.addCustomer("Mrs.", "WrongNumberTwo", new Phone("aaaaaaaaa"));
-        projectManager.addCustomer("Mrs.", "WrongNumberTwo", new Phone("aaaaaaaaa"));
+        projectManager.addCustomer("Mrs.", "WrongNumberThree", new Phone("aua675890"));
 
-        Customer customer = projectManager.getCustomerByNameAndSurname("George","Smith");
+        Customer customer = projectManager.getCustomerByNameAndSurname("George", "Washington");
+        Customer customer2 = projectManager.getCustomerByPosition(1);
         ArrayList<Customer> customers = projectManager.getCustomers();
         System.out.println(customer.toString());
         System.out.println(customers);
@@ -31,7 +32,7 @@ public class Main {
         projectManager.addEmployee("Charles", "CharlesKing69@empresa.com", new ArrayList<>(), new ArrayList<>());
 
         ArrayList<Employee> employees = projectManager.getEmployees();
-        System.out.println(employees.toString());
+        System.out.println(employees.toString() + '\n');
         Employee employee1Developer = projectManager.getEmployeeByEmail("CharlesKing69@empresa.com");
         Employee employee2Manager = projectManager.getEmployeeByName("Trump");
         System.out.println(employee1Developer);
@@ -42,22 +43,28 @@ public class Main {
         int contractBudget = 1000;
         ArrayList<Employee> developers = new ArrayList<>();
         developers.add(employee1Developer);
+
         // Project:
         projectManager.project(customer, "Proyecto 1",
-                "Proyecto de prueba", ProjectType.WebDevelopment, employee2Manager, contractStart,
+                "Test for a new Project", ProjectType.WebDevelopment, employee2Manager, contractStart,
                 contractEnd, contractBudget, developers);
 
+        // 1st customer Project
         Project project = customer.getProjects().get(0);
-        System.out.println(project.toString());
-
+        System.out.println(project.toString() + '\n');
 
         // Create tasks
         project.addTask("Task 1", "Developing a web for adult content", contractStart,
                 contractEnd, TaskType.Programming);
         project.addTask("Task 2", "Developing an ad-service web for kid's toys", contractStart,
                 contractEnd, TaskType.Design);
-        System.out.println(project);
+        System.out.println(project);    // Project with tasks implemented
 
-
+        // Remove second customer
+        System.out.println("\nThe second customer is: " + customer2);
+        System.out.println("Current number of customers: " + customers.size());
+        customers.remove(1);
+        System.out.println("The list of customer updated: " + customers);
+        System.out.println("Current number of customers: " + customers.size());
     }
-    }
+}

@@ -1,9 +1,7 @@
 package org.ulpgc.is1.control;
 
-import org.junit.runner.manipulation.InvalidOrderingException;
 import org.ulpgc.is1.model.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,7 +17,7 @@ public class ProjectManager {
     public void addCustomer(String name, String surname, Phone number) {
         Customer customer = new Customer(name, surname, number);
         boolean condition = false;
-        for (Customer currentCustomer : customers){
+        for (Customer currentCustomer : customers) {
             if ((customer.getName().equals(currentCustomer.getName()) &&
                     customer.getSurname().equals(currentCustomer.getSurname())) |
                     customer.getPhone().getNumber().equals(currentCustomer.getPhone().getNumber())) {
@@ -29,13 +27,15 @@ public class ProjectManager {
         }
         if (!(customers.contains(customer) || condition)) {
             customers.add(customer);
-        } else {System.out.println("That customer is already in the list!");}
+        } else {
+            System.out.println("That customer is already in the list!");
+        }
     }
 
     public void addEmployee(String name, String email, ArrayList<Task> tasks, ArrayList<Project> projects) {
         Employee employee = new Employee(name, email, tasks, projects);
         boolean condition = false;
-        for (Employee currentEmployee:employees) {
+        for (Employee currentEmployee : employees) {
             if (currentEmployee.getEmail().equals(employee.getEmail())) {
                 condition = true;
                 break;
@@ -43,7 +43,9 @@ public class ProjectManager {
         }
         if (!(employees.contains(employee) || condition)) {
             employees.add(employee);
-        } else {System.out.println("That employee is already in the list!");}
+        } else {
+            System.out.println("That employee is already in the list!");
+        }
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -59,7 +61,8 @@ public class ProjectManager {
             if (customer.getName().equals(name) && customer.getSurname().equals(surname)) {
                 return customer;
             }
-        } return null;
+        }
+        return null;
     }
 
     public ArrayList<Employee> getEmployees() {
@@ -75,7 +78,8 @@ public class ProjectManager {
             if (employee.getName().equals(name)) {
                 return employee;
             }
-        } return null;
+        }
+        return null;
     }
 
     public Employee getEmployeeByEmail(String email) {
@@ -83,7 +87,8 @@ public class ProjectManager {
             if (employee.getEmail().equals(email)) {
                 return employee;
             }
-        } return null;
+        }
+        return null;
     }
 
     /*
@@ -109,8 +114,16 @@ public class ProjectManager {
         this.employees = employees;
     }
 
+    public void removeCustomerByPosition(int i) {
+        if (customers.size() < i) {
+            System.out.println("Index out of bounds! Customer not removed.");
+        } else {
+            customers.remove(i);
+        }
+    }
+
     public void project(Customer customer, String name, String description, ProjectType type, Employee manager, Date contractStart,
-                                 Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
+                        Date contractEnd, int contractBudget, ArrayList<Employee> developers) {
         Project project = new Project(name, description, type, manager, contractStart, contractEnd, contractBudget,
                 developers, customer);
         customer.addProject(project);
